@@ -15,11 +15,10 @@ var favoritePlaces = [
     {content:'Krakow, Poland', coordinates:{lat:50.0647,lng:19.9450}, iconImagePath:"flag.png"},
     {content:'Zakopane, Poland', coordinates:{lat:49.2992,lng:19.9496}, iconImagePath:"flag.png"},
     {content:'Canoe Bay, WI', coordinates:{lat:45.3306,lng:-91.4918}, iconImagePath:"flag.png"}
-    {content:'Los Angeles, CA', coordinates:{lat:34.052235,lng:-118.243683}, iconImagePath:"flag.png"}
-];  
-var currentPlaceIndex = 10;
+]; 
+var currentPlaceIndex = 9;
 var currentPlace = favoritePlaces[currentPlaceIndex];
-var score = 11;
+var score = 10;
 
 function initApplication() {
     console.log('Map Mania Lite - Starting!');
@@ -46,8 +45,8 @@ function initMap() {
 
     // Note that several message boards suggested using 'idle' instead of 'bounds_changed' because 
     // 'bounds_changed' gets called over and over when the user drags the map.
-    google.maps.event.addListener(gMap, 'idle', function() {
-        updateGame()
+    google.maps.event.addListener(gMap, 'bounds_changed', function() {
+      alert(gMap.getBounds());
     });
 
     SetHint("Hint 1");
